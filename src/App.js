@@ -1,28 +1,19 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-
+import { connect } from "react-redux";
+import {getData} from './redux/actions/index'
+import { DS, EP } from './redux/constants/actionTypes';
 class App extends Component {
+  componentDidMount() {
+    this.props.getData(DS);
+    this.props.getData(EP)
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
       </div>
     );
   }
 }
 
-export default App;
+export default connect(null,{getData})(App);
